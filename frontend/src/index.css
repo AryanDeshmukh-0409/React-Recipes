@@ -1,0 +1,226 @@
+/* === Global Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* === Navbar Styles === */
+nav {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav h1 {
+  color: #007bff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+nav a.active {
+  color: #007bff;
+  font-weight: 600;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 3px;
+}
+
+/* === Page Container === */
+.content {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* === Home Page === */
+.text-center {
+  text-align: center;
+}
+
+.text-center h2 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.text-center p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+/* === Recipe Search === */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.search-container input {
+  width: 60%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+/* === Recipe Grid === */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.recipe-card .info {
+  padding: 15px;
+}
+
+.recipe-card h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.recipe-card p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* === Favorites & Meal Planner === */
+h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav h1 {
+    margin-bottom: 10px;
+  }
+
+  .search-container input {
+    width: 70%;
+  }
+}
+
+
+/* Access Page */
+.access-container {
+  text-align: center;
+  padding: 50px;
+}
+
+.access-buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.guest-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+}
+
+/* Page Layout */
+.page-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.recipe-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.recipe-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  width: 200px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.register-prompt {
+  margin-top: 20px;
+  font-style: italic;
+}
+

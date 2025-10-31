@@ -1,0 +1,62 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@example.com",
+      "password": "hashed_password",
+      "name": "John Doe",
+      "isAdmin": false
+    }
+  ],
+  "favorites": [
+    {
+      "id": 1,
+      "userId": 1,
+      "recipeId": 716429,
+      "title": "Pasta with Garlic, Scallions, Cherry Tomatoes and Basil",
+      "image": "https://spoonacular.com/recipeImages/716429-312x231.jpg"
+    }
+  ],
+  "mealPlans": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "My First Weekly Plan",
+      "week": "2025-10-27",
+      "planData": {
+        "monday": {
+          "meals": [
+            {
+              "id": 641803,
+              "title": "Easy & Delish!",
+              "imageType": "jpg"
+            }
+          ],
+          "nutrients": { "calories": 2000 }
+        },
+        "tuesday": {}
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "recipeId": 716429,
+      "userId": 1,
+      "rating": 5,
+      "comment": "This was a fantastic recipe!",
+      "date": "2025-10-28T12:00:00Z"
+    }
+  ],
+  "customRecipes": [
+    {
+      "id": "c1",
+      "userId": 1,
+      "title": "Grandma's Secret Cookies",
+      "ingredients": "Flour, Sugar, Love",
+      "instructions": "Mix and bake.",
+      "image": "https://placehold.co/312x231/eee/ccc?text=My+Recipe"
+    }
+  ]
+}
+
