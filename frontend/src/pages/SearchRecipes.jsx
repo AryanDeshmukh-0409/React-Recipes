@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RecipeCard from "../components/RecipeCard";
+import "../Search.css"; // ✅ import the custom search CSS
 
 const API_KEY = import.meta.env.VITE_SPOONACULAR_KEY;
 
@@ -22,22 +23,26 @@ const SearchRecipes = () => {
 
   return (
     <div className="page-container">
-      <h2>🔍 Search Recipes</h2>
-      <form onSubmit={handleSearch}>
+      <h2 className="page-title">🍽️ Search Recipes</h2>
+
+      <form onSubmit={handleSearch} className="search-container">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search by name (e.g. pasta)"
+          placeholder="Search delicious recipes..."
+          className="search-input"
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="search-button">
+          Search
+        </button>
       </form>
 
       <div className="recipe-grid">
         {results.length > 0 ? (
           results.map((r) => <RecipeCard key={r.id} recipe={r} />)
         ) : (
-          <p>No recipes found yet. Try searching!</p>
+          <p className="no-results">No recipes found yet. Try searching!</p>
         )}
       </div>
     </div>
