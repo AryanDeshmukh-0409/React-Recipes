@@ -1,0 +1,111 @@
+/* =============================
+   Signup Page Styling
+============================= */
+
+.signup-page {
+  height: 100vh;
+  width: 100%;
+  background: url('/images/kitchen-bg.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+}
+
+.signup-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+.signup-container {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 60px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.signup-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.signup-subtitle {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+}
+
+.signup-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2980b9, #1f5fa0);
+}
+
+.error-msg {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.success-msg {
+  color: #27ae60;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.signup-footer {
+  margin-top: 15px;
+  color: #555;
+}
+
+.signup-footer span {
+  color: #3498db;
+  font-weight: 600;
+  cursor: pointer;
+}
+.signup-footer span:hover {
+  text-decoration: underline;
+}

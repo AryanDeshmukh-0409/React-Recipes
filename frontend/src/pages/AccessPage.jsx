@@ -17,7 +17,7 @@ const AccessPage = () => {
         <button onClick={() => alert("Login functionality coming soon!")}>
           Login
         </button>
-        <button onClick={() => alert("Sign up functionality coming soon!")}>
+        <button onClick={() => navigate("/Signup")} className="signup-btn"> 
           Sign Up
         </button>
       </div>
