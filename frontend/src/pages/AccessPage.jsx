@@ -14,7 +14,7 @@ const AccessPage = () => {
         <button onClick={() => navigate("/guest/home")} className="guest-btn">
           Continue as Guest
         </button>
-        <button onClick={() => alert("Login functionality coming soon!")}>
+        <button onClick={() => navigate("/Login")} className="login-btn">
           Login
         </button>
         <button onClick={() => navigate("/Signup")} className="signup-btn"> 

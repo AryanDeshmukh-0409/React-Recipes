@@ -1,5 +1,4 @@
-/* Signup Page Styles */
-.signup-page {
+.login-page {
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -9,8 +8,7 @@
   overflow: hidden;
 }
 
-/* Dark blur overlay for background */
-.signup-page::before {
+.login-page::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -19,8 +17,7 @@
   z-index: 0;
 }
 
-/* Signup container (form card) */
-.signup-container {
+.login-container {
   position: relative;
   z-index: 1;
   background: rgba(255, 255, 255, 0.9);
@@ -32,7 +29,6 @@
   animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -44,8 +40,7 @@
   }
 }
 
-/* Titles */
-.signup-title {
+.login-title {
   text-align: center;
   color: #333;
   font-size: 1.8rem;
@@ -53,20 +48,19 @@
   font-weight: 700;
 }
 
-.signup-subtitle {
+.login-subtitle {
   text-align: center;
   color: #666;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
 }
 
-/* Form inputs */
-.signup-container form {
+.login-container form {
   display: flex;
   flex-direction: column;
 }
 
-.signup-container input {
+.login-container input {
   margin-bottom: 1rem;
   padding: 0.8rem;
   border: 1px solid #ccc;
@@ -75,14 +69,13 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.signup-container input:focus {
+.login-container input:focus {
   outline: none;
   border-color: #ff6b00;
   box-shadow: 0 0 5px rgba(255, 107, 0, 0.5);
 }
 
-/* Button */
-.signup-btn {
+.login-btn {
   background: linear-gradient(135deg, #ff6b00, #ff8c42);
   color: #fff;
   border: none;
@@ -94,12 +87,11 @@
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.signup-btn:hover {
+.login-btn:hover {
   background: linear-gradient(135deg, #ff7b1a, #ffaa5c);
   transform: scale(1.03);
 }
 
-/* Messages */
 .error-msg {
   color: #e63946;
   font-size: 0.9rem;
@@ -114,21 +106,37 @@
   text-align: center;
 }
 
-/* Footer */
-.signup-footer {
+.login-footer {
   text-align: center;
   margin-top: 1rem;
   font-size: 0.95rem;
   color: #444;
 }
 
-.signup-footer span {
+.login-footer span {
   color: #ff6b00;
   font-weight: 600;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
-.signup-footer span:hover {
+.login-footer span:hover {
+  color: #e25a00;
+}
+
+.guest-access {
+  text-align: center;
+  margin-top: 0.8rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.guest-access span {
+  color: #ff6b00;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.guest-access span:hover {
   color: #e25a00;
 }

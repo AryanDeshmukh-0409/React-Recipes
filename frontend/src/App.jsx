@@ -5,6 +5,7 @@ import AccessPage from "./pages/AccessPage";
 import Home from "./pages/Home";
 import SearchRecipes from "./pages/SearchRecipes";
 import RecipeDetails from "./pages/Recipedetails";
+import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
 
@@ -15,7 +16,7 @@ function App() {
       <div className="content" style={{ minHeight: "100vh", padding: "1rem" }}>
         <Routes>
           <Route path="/" element={<AccessPage />} />
-          
+          <Route path="/login" element={<Login />} />
           <Route path="/guest/home" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
 
