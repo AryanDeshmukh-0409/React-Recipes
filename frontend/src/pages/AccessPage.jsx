@@ -1,9 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../index.css";
 
-const AccessPage = () => {
+const AccessPage = ({ setShowNavbar, setLoggedInUser }) => {
   const navigate = useNavigate();
+
+  const handleGuest = () => {
+    setLoggedInUser({ name: "Guest" }); // optional placeholder
+    setShowNavbar(true);
+    navigate("/guest/home");
+  };
 
   return (
     <div className="access-container">
@@ -11,13 +16,13 @@ const AccessPage = () => {
       <p>Select how you’d like to access:</p>
 
       <div className="access-buttons">
-        <button onClick={() => navigate("/guest/home")} className="guest-btn">
+        <button className="guest-btn" onClick={handleGuest}>
           Continue as Guest
         </button>
-        <button onClick={() => navigate("/Login")} className="login-btn">
+        <button className="login-btn" onClick={() => navigate("/login")}>
           Login
         </button>
-        <button onClick={() => navigate("/Signup")} className="signup-btn"> 
+        <button className="signup-btn" onClick={() => navigate("/signup")}>
           Sign Up
         </button>
       </div>
