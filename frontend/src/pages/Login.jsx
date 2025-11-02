@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
-    
+function Login({ setLoggedInUser }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,13 +29,8 @@ function Login() {
       if (foundUser) {
         setSuccess("Login successful! Redirecting...");
         localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
-if (foundUser) {
-  setSuccess("Login successful! Redirecting...");
-  localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
-  setTimeout(() => navigate("/home"), 2000); // ✅ redirect to home
-} else {
-  setError("Invalid email or password. Please try again.");
-}
+        setLoggedInUser(foundUser); // ✅ Update Navbar immediately
+        setTimeout(() => navigate("/guest/home"), 2000);
       } else {
         setError("Invalid email or password. Please try again.");
       }
@@ -48,119 +42,100 @@ if (foundUser) {
 
   return (
     <div className="login-page">
-      {/* Inline CSS inside the component so no external import needed */}
       <style>{`
-        :root{
-          --bg1: #f6f8ff;
-          --bg2: #eef6ff;
-          --card-bg: #ffffff;
-          --accent: #ff6b6b;
-          --muted: #6b7280;
-          --success: #16a34a;
-          --danger: #dc2626;
-          --glass: rgba(255,255,255,0.6);
-        }
-
-        * { box-sizing: border-box; }
         .login-page {
           min-height: 100vh;
           display: flex;
-          align-items: center;
           justify-content: center;
-          padding: 32px;
-          background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+          align-items: center;
+          padding: 2rem;
+          background: linear-gradient(135deg, #f6f8ff, #eef6ff);
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
         }
 
         .login-container {
-          width: 100%;
-          max-width: 420px;
-          background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+          background: rgba(255,255,255,0.9);
           border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-          padding: 28px;
+          padding: 2rem;
+          max-width: 400px;
+          width: 100%;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
           backdrop-filter: blur(6px);
-          border: 1px solid rgba(16,24,40,0.04);
         }
 
         .login-title {
-          margin: 0 0 6px 0;
-          font-size: 22px;
-          letter-spacing: -0.2px;
+          margin-bottom: 0.5rem;
+          font-size: 1.8rem;
           color: #0f172a;
+          text-align: center;
         }
 
         .login-subtitle {
-          margin: 0 0 18px 0;
-          color: var(--muted);
-          font-size: 13px;
+          font-size: 0.95rem;
+          color: #6b7280;
+          text-align: center;
+          margin-bottom: 1.5rem;
         }
 
         form {
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 0.75rem;
         }
 
         input[type="email"],
-        input[type="password"]{
-          width: 100%;
-          padding: 12px 14px;
+        input[type="password"] {
+          padding: 0.75rem 1rem;
           border-radius: 10px;
           border: 1px solid rgba(15,23,42,0.06);
-          background: linear-gradient(180deg, #fff, var(--glass));
+          font-size: 0.95rem;
           outline: none;
-          font-size: 14px;
-          transition: box-shadow .12s ease, transform .08s ease;
+          transition: box-shadow 0.2s ease;
         }
-
-        input::placeholder { color: #9aa3b2; }
 
         input:focus {
           box-shadow: 0 6px 18px rgba(99,102,241,0.08);
-          transform: translateY(-1px);
           border-color: rgba(99,102,241,0.65);
         }
 
         .login-btn {
-          margin-top: 6px;
-          padding: 12px 14px;
+          padding: 0.75rem;
           border-radius: 10px;
           border: none;
-          cursor: pointer;
-          font-weight: 600;
-          font-size: 15px;
           background: linear-gradient(90deg, #6d28d9, #9333ea);
-          color: #fff;
-          box-shadow: 0 8px 20px rgba(99,102,241,0.12);
-          transition: transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+          color: white;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          margin-top: 0.5rem;
         }
 
-        .login-btn:active { transform: translateY(1px) scale(.997); }
-        .login-btn:hover { box-shadow: 0 12px 30px rgba(99,102,241,0.14); }
+        .login-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(99,102,241,0.12);
+        }
 
         .error-msg {
-          margin: 6px 0 0 0;
-          color: var(--danger);
-          font-size: 13px;
+          color: #dc2626;
           background: rgba(220,38,38,0.06);
-          padding: 8px 10px;
+          padding: 0.5rem;
           border-radius: 8px;
+          font-size: 0.85rem;
         }
 
         .success-msg {
-          margin: 6px 0 0 0;
-          color: var(--success);
-          font-size: 13px;
+          color: #16a34a;
           background: rgba(16,185,129,0.06);
-          padding: 8px 10px;
+          padding: 0.5rem;
           border-radius: 8px;
+          font-size: 0.85rem;
         }
 
         .login-footer, .guest-access {
-          margin-top: 14px;
-          font-size: 13px;
-          color: var(--muted);
+          text-align: center;
+          margin-top: 1rem;
+          font-size: 0.85rem;
+          color: #6b7280;
         }
 
         .login-footer span,
@@ -173,19 +148,14 @@ if (foundUser) {
         .login-footer span:hover,
         .guest-access span:hover {
           text-decoration: underline;
-          opacity: 0.95;
-        }
-
-        /* smaller screens */
-        @media (max-width: 480px) {
-          .login-container { padding: 20px; border-radius: 12px; }
-          .login-title { font-size: 20px; }
         }
       `}</style>
 
       <div className="login-container">
         <h2 className="login-title">Welcome Back 👋</h2>
-        <p className="login-subtitle">Log in to explore your favorite recipes</p>
+        <p className="login-subtitle">
+          Log in to explore your favorite recipes
+        </p>
 
         <form onSubmit={handleSubmit}>
           <input
@@ -194,7 +164,6 @@ if (foundUser) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-
           <input
             type="password"
             placeholder="Password"
@@ -205,7 +174,9 @@ if (foundUser) {
           {error && <p className="error-msg">{error}</p>}
           {success && <p className="success-msg">{success}</p>}
 
-          <button type="submit" className="login-btn">Login</button>
+          <button type="submit" className="login-btn">
+            Login
+          </button>
         </form>
 
         <p className="login-footer">
@@ -215,7 +186,7 @@ if (foundUser) {
 
         <p className="guest-access">
           or continue as{" "}
-          <span onClick={() => navigate("/home")}>Guest</span>
+          <span onClick={() => navigate("/guest/home")}>Guest</span>
         </p>
       </div>
     </div>

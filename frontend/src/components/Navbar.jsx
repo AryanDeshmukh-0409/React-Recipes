@@ -1,14 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Navbar() {
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
+function Navbar({ loggedInUser, setLoggedInUser }) {
   return (
     <nav style={{ display: "flex", alignItems: "center", padding: "0 20px" }}>
       <h1 style={{ marginRight: "20px" }}>React Recipes</h1>
 
-      {/* Main navigation links */}
       <div style={{ display: "flex", gap: "15px" }}>
         <NavLink to="/" end>Home</NavLink>
         <NavLink to="/recipes">Recipes</NavLink>
@@ -16,7 +13,6 @@ function Navbar() {
         <NavLink to="/mealplanner">Meal Planner</NavLink>
       </div>
 
-      {/* Logged-in user display */}
       {loggedInUser && (
         <div
           style={{
@@ -29,7 +25,6 @@ function Navbar() {
             backgroundColor: "#f1f1f1",
           }}
         >
-          {/* Empty profile picture */}
           <div
             style={{
               width: "32px",
@@ -39,14 +34,12 @@ function Navbar() {
             }}
           ></div>
 
-          {/* User name */}
           <span style={{ fontWeight: "600" }}>{loggedInUser.name}</span>
 
-          {/* Optional Logout */}
           <button
             onClick={() => {
               localStorage.removeItem("loggedInUser");
-              window.location.reload();
+              setLoggedInUser(null); // update state dynamically
             }}
             style={{
               background: "transparent",
