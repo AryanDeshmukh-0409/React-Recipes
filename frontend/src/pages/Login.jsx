@@ -30,7 +30,7 @@ function Login({ setLoggedInUser }) {
         setSuccess("Login successful! Redirecting...");
         localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
         setLoggedInUser(foundUser); // ✅ Update Navbar immediately
-        setTimeout(() => navigate("/guest/home"), 2000);
+        setTimeout(() => navigate("/guest/home"), 1500);
       } else {
         setError("Invalid email or password. Please try again.");
       }
@@ -38,6 +38,13 @@ function Login({ setLoggedInUser }) {
       console.error(err);
       setError("Failed to connect to the server. Try again later.");
     }
+  };
+
+  const handleGuestAccess = () => {
+    const guestUser = { name: "Guest" };
+    localStorage.setItem("loggedInUser", JSON.stringify(guestUser));
+    setLoggedInUser(guestUser);
+    navigate("/guest/home");
   };
 
   return (
@@ -186,7 +193,7 @@ function Login({ setLoggedInUser }) {
 
         <p className="guest-access">
           or continue as{" "}
-          <span onClick={() => navigate("/guest/home")}>Guest</span>
+          <span onClick={handleGuestAccess}>Guest</span>
         </p>
       </div>
     </div>
@@ -194,3 +201,4 @@ function Login({ setLoggedInUser }) {
 }
 
 export default Login;
+

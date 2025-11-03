@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import AccessPage from "./pages/AccessPage";
 import Home from "./pages/Home";
@@ -7,59 +7,43 @@ import SearchRecipes from "./pages/SearchRecipes";
 import RecipeDetails from "./pages/Recipedetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Favorites from "./pages/Favorites";
-import MealPlanner from "./pages/MealPlanner";
 
 function App() {
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const location = useLocation();
   const navigate = useNavigate();
 
-  // Store logged in user in state
-  const [loggedInUser, setLoggedInUser] = useState(
-    JSON.parse(localStorage.getItem("loggedInUser")) || null
-  );
-
-  // Navbar visibility: only show after user chooses access
-  const [showNavbar, setShowNavbar] = useState(false);
-
-  // Detect if user is logged in
+  // Load from localStorage on app start
   useEffect(() => {
-    if (loggedInUser) setShowNavbar(true);
-  }, [loggedInUser]);
+    const storedUser = localStorage.getItem("loggedInUser");
+    if (storedUser) {
+      setLoggedInUser(JSON.parse(storedUser));
+    }
+  }, []);
 
-  // Logout function
+  // Logout function (centralized)
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
-    setShowNavbar(false);
-    navigate("/"); // redirect to AccessPage
+    navigate("/"); // redirect to access page
   };
+
+  // Hide Navbar only on AccessPage
+  const hideNavbar = location.pathname === "/";
 
   return (
     <>
-      {showNavbar && (
+      {!hideNavbar && (
         <Navbar loggedInUser={loggedInUser} onLogout={handleLogout} />
       )}
 
       <div className="content" style={{ minHeight: "100vh", padding: "1rem" }}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <AccessPage
-                setShowNavbar={setShowNavbar}
-                setLoggedInUser={setLoggedInUser}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={<Login setLoggedInUser={setLoggedInUser} />}
-          />
+          <Route path="/" element={<AccessPage />} />
+          <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/guest/home" element={<Home />} />
           <Route path="/guest/search" element={<SearchRecipes />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/mealplanner" element={<MealPlanner />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
         </Routes>
       </div>
@@ -68,3 +52,4 @@ function App() {
 }
 
 export default App;
+

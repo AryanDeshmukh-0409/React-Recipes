@@ -1,52 +1,99 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function Navbar({ loggedInUser, setLoggedInUser }) {
+function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
   return (
-    <nav style={{ display: "flex", alignItems: "center", padding: "0 20px" }}>
-      <h1 style={{ marginRight: "20px" }}>React Recipes</h1>
+    <nav
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "12px 24px",
+        backgroundColor: "#fff",
+        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
+      }}
+    >
+      {/* Logo */}
+      <h1 style={{ color: "#007bff", fontSize: "1.5rem" }}>React Recipes</h1>
 
-      <div style={{ display: "flex", gap: "15px" }}>
-        <NavLink to="/" end>Home</NavLink>
-        <NavLink to="/recipes">Recipes</NavLink>
-        <NavLink to="/favorites">Favorites</NavLink>
-        <NavLink to="/mealplanner">Meal Planner</NavLink>
+      {/* Navigation Links */}
+      <div style={{ display: "flex", gap: "20px" }}>
+        <NavLink
+          to="/guest/home"
+          style={({ isActive }) => ({
+            color: isActive ? "#007bff" : "#333",
+            textDecoration: "none",
+            fontWeight: "500",
+          })}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/guest/search"
+          style={({ isActive }) => ({
+            color: isActive ? "#007bff" : "#333",
+            textDecoration: "none",
+            fontWeight: "500",
+          })}
+        >
+          Recipes
+        </NavLink>
+        <NavLink
+          to="/favorites"
+          style={({ isActive }) => ({
+            color: isActive ? "#007bff" : "#333",
+            textDecoration: "none",
+            fontWeight: "500",
+          })}
+        >
+          Favorites
+        </NavLink>
+        <NavLink
+          to="/mealplanner"
+          style={({ isActive }) => ({
+            color: isActive ? "#007bff" : "#333",
+            textDecoration: "none",
+            fontWeight: "500",
+          })}
+        >
+          Meal Planner
+        </NavLink>
       </div>
 
+      {/* Logged-in user section */}
       {loggedInUser && (
         <div
           style={{
-            marginLeft: "auto",
             display: "flex",
             alignItems: "center",
             gap: "10px",
-            padding: "5px 10px",
+            backgroundColor: "#f7f7f7",
             borderRadius: "8px",
-            backgroundColor: "#f1f1f1",
+            padding: "6px 12px",
           }}
         >
           <div
             style={{
-              width: "32px",
-              height: "32px",
+              width: "36px",
+              height: "36px",
               borderRadius: "50%",
-              backgroundColor: "#ccc",
+              backgroundColor: "#d0d0d0",
             }}
           ></div>
-
-          <span style={{ fontWeight: "600" }}>{loggedInUser.name}</span>
-
+          <span style={{ fontWeight: "600", color: "#333" }}>
+            {loggedInUser.name}
+          </span>
           <button
-            onClick={() => {
-              localStorage.removeItem("loggedInUser");
-              setLoggedInUser(null); // update state dynamically
-            }}
+            onClick={onLogout}
             style={{
-              background: "transparent",
               border: "none",
-              cursor: "pointer",
-              fontWeight: "600",
+              background: "transparent",
               color: "#007bff",
+              fontWeight: "600",
+              cursor: "pointer",
             }}
           >
             Logout

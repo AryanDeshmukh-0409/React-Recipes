@@ -16,7 +16,7 @@ const AccessPage = ({ setShowNavbar, setLoggedInUser }) => {
       <p>Select how you’d like to access:</p>
 
       <div className="access-buttons">
-        <button className="guest-btn" onClick={handleGuest}>
+        <button className="guest-btn" onClick={() => navigate("/guest/home")}>
           Continue as Guest
         </button>
         <button className="login-btn" onClick={() => navigate("/login")}>
