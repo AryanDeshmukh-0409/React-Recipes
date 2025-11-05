@@ -7,6 +7,7 @@ import SearchRecipes from "./pages/SearchRecipes";
 import RecipeDetails from "./pages/Recipedetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -42,6 +43,8 @@ function App() {
           <Route path="/" element={<AccessPage />} />
           <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser} />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/favorites" element={<Favorites />} />
+
           <Route path="/guest/home" element={<Home />} />
           <Route path="/guest/search" element={<SearchRecipes />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />

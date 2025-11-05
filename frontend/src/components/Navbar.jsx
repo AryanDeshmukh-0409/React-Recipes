@@ -31,6 +31,7 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
         >
           Home
         </NavLink>
+
         <NavLink
           to="/guest/search"
           style={({ isActive }) => ({
@@ -41,16 +42,21 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
         >
           Recipes
         </NavLink>
-        <NavLink
-          to="/favorites"
-          style={({ isActive }) => ({
-            color: isActive ? "#007bff" : "#333",
-            textDecoration: "none",
-            fontWeight: "500",
-          })}
-        >
-          Favorites
-        </NavLink>
+
+        {/* ✅ Show "Favorites" only if the user is logged in */}
+        {loggedInUser && (
+          <NavLink
+            to="/favorites"
+            style={({ isActive }) => ({
+              color: isActive ? "#007bff" : "#333",
+              textDecoration: "none",
+              fontWeight: "500",
+            })}
+          >
+            Favorites
+          </NavLink>
+        )}
+
         <NavLink
           to="/mealplanner"
           style={({ isActive }) => ({

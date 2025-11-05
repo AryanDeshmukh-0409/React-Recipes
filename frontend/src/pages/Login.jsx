@@ -30,6 +30,7 @@ function Login({ setLoggedInUser }) {
         setSuccess("Login successful! Redirecting...");
         localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
         setLoggedInUser(foundUser); // ✅ Update Navbar immediately
+        
         setTimeout(() => navigate("/guest/home"), 1500);
       } else {
         setError("Invalid email or password. Please try again.");
