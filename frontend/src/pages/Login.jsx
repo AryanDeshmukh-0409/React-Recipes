@@ -29,8 +29,30 @@ function Login({ setLoggedInUser }) {
       if (foundUser) {
         setSuccess("Login successful! Redirecting...");
         localStorage.setItem("loggedInUser", JSON.stringify(foundUser));
-        setLoggedInUser(foundUser); // ✅ Update Navbar immediately
-        
+        setLoggedInUser(foundUser); // Update Navbar immediately
+
+        // --- MERGE GUEST LOCALSTORAGE FAVORITES ---
+        const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        if (localFavorites.length > 0) {
+          const favRes = await fetch(
+            `http://localhost:3000/favorites?userId=${foundUser.id}`
+          );
+          const userFavorites = await favRes.json();
+
+          for (const fav of localFavorites) {
+            if (!userFavorites.find((uf) => uf.recipeId === fav.recipeId)) {
+              await fetch("http://localhost:3000/favorites", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...fav, userId: foundUser.id }),
+              });
+            }
+          }
+
+          localStorage.removeItem("favorites"); // clear guest favorites
+        }
+        // --- END MERGE LOGIC ---
+
         setTimeout(() => navigate("/guest/home"), 1500);
       } else {
         setError("Invalid email or password. Please try again.");
@@ -182,9 +204,7 @@ function Login({ setLoggedInUser }) {
           {error && <p className="error-msg">{error}</p>}
           {success && <p className="success-msg">{success}</p>}
 
-          <button type="submit" className="login-btn">
-            Login
-          </button>
+          <button type="submit" className="login-btn">Login</button>
         </form>
 
         <p className="login-footer">
@@ -202,4 +222,3 @@ function Login({ setLoggedInUser }) {
 }
 
 export default Login;
-

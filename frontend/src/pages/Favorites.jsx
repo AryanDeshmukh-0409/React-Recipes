@@ -2,21 +2,30 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Favorites = () => {
-  const [favorites, setFavorites] = useState([]); // ❤️ ADDED – Store user's favorite recipes
+  const [favorites, setFavorites] = useState([]); 
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")); // ❤️ ADDED – Get current user
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  // ❤️ Fetch user's favorites from db.json
   useEffect(() => {
     const fetchFavorites = async () => {
-      if (!loggedInUser) {
-        alert("Please log in to view your favorite recipes.");
-        navigate("/login");
+      // ✅ Guest user → load from localStorage
+      if (loggedInUser && !loggedInUser.id) {
+        const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        setFavorites(localFavorites);
+        setLoading(false);
         return;
       }
+        // Determine if user can save favorites
+const isGuest = loggedInUser?.name === "Guest";
 
+// In handleAddToFavorites or fetchFavorites:
+if (!loggedInUser || isGuest) {
+  // For guest, use localStorage instead of JSON Server
+}
+      // ✅ Logged-in user → load from JSON Server
+     
       try {
         const res = await fetch(
           `http://localhost:3000/favorites?userId=${loggedInUser.id}`
@@ -33,8 +42,19 @@ const Favorites = () => {
     fetchFavorites();
   }, []);
 
-  // ❤️ Remove a recipe from favorites
+  // Remove favorite
   const handleRemove = async (favoriteId) => {
+    if (loggedInUser && !loggedInUser.id) {
+      // ✅ Guest user → remove from localStorage
+      const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const updated = localFavorites.filter((fav) => fav.recipeId !== favoriteId);
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      setFavorites(updated);
+      alert("Recipe removed from favorites 💔");
+      return;
+    }
+
+    // ✅ Logged-in user → remove from JSON Server
     try {
       await fetch(`http://localhost:3000/favorites/${favoriteId}`, {
         method: "DELETE",
@@ -70,7 +90,7 @@ const Favorites = () => {
         >
           {favorites.map((fav) => (
             <div
-              key={fav.id}
+              key={fav.id || fav.recipeId} // ✅ fallback for guest favorites
               className="favorite-card"
               style={{
                 border: "1px solid #ddd",
@@ -97,7 +117,6 @@ const Favorites = () => {
                 className="favorite-actions"
                 style={{ display: "flex", justifyContent: "center", gap: "10px" }}
               >
-                {/* ❤️ View details button */}
                 <button
                   onClick={() => navigate(`/recipes/${fav.recipeId}`)}
                   style={{
@@ -112,9 +131,8 @@ const Favorites = () => {
                   View Details
                 </button>
 
-                {/* 💔 Remove button */}
                 <button
-                  onClick={() => handleRemove(fav.id)}
+                  onClick={() => handleRemove(fav.id || fav.recipeId)}
                   style={{
                     backgroundColor: "#ff4757",
                     color: "white",
@@ -136,3 +154,4 @@ const Favorites = () => {
 };
 
 export default Favorites;
+

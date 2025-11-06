@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Favorites from "./pages/Favorites";
 
+
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const location = useLocation();

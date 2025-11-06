@@ -5,94 +5,104 @@ const RecipeDetails = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isFavorite, setIsFavorite] = useState(false); // ❤️ ADDED – Track if this recipe is saved
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const apiKey = import.meta.env.VITE_SPOONACULAR_KEY;
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")); // ❤️ ADDED – Get logged-in user
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  // Fetch recipe details
+  // Fetch recipe details from Spoonacular
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
         const res = await fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`
+          `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${apiKey}`
         );
         const data = await res.json();
         setRecipe(data);
-
-        // ❤️ ADDED – Check if this recipe is already favorited in JSON Server
-        if (loggedInUser) {
-          const favRes = await fetch(
-            `http://localhost:3000/favorites?userId=${loggedInUser.id}&recipeId=${id}`
-          );
-          const favData = await favRes.json();
-          if (favData.length > 0) setIsFavorite(true);
-        }
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching recipe:", err);
       } finally {
         setLoading(false);
       }
     };
-
     fetchRecipe();
   }, [id]);
 
-  // ❤️ ADDED – Function to save recipe to favorites (matches your db.json)
+  // Check if already favorite
+  useEffect(() => {
+    const checkFavorite = async () => {
+      if (!loggedInUser) return;
+      if (loggedInUser && loggedInUser.id) {
+        const res = await fetch(`http://localhost:3000/favorites?userId=${loggedInUser.id}&recipeId=${id}`);
+        const data = await res.json();
+        setIsFavorite(data.length > 0);
+      } else {
+        const localFavs = JSON.parse(localStorage.getItem("favorites")) || [];
+        setIsFavorite(localFavs.some((f) => f.recipeId === parseInt(id)));
+      }
+    };
+    checkFavorite();
+  }, [id]);
+
   const handleAddToFavorites = async () => {
-    if (!loggedInUser) {
-      alert("Please log in to save recipes to favorites!");
+    if (!recipe) return;
+    const newFavorite = {
+      recipeId: recipe.id,
+      title: recipe.title,
+      image: recipe.image,
+    };
+
+    // ✅ Guest user → localStorage
+    if (!loggedInUser || !loggedInUser.id) {
+      const guestFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const exists = guestFavorites.some((fav) => fav.recipeId === recipe.id);
+      if (exists) return alert("Recipe already in favorites ❤️");
+      localStorage.setItem("favorites", JSON.stringify([...guestFavorites, newFavorite]));
+      setIsFavorite(true);
+      alert("Recipe added to favorites ❤️");
       return;
     }
 
+    // ✅ Logged-in user → JSON server
     try {
-      // Check if recipe already exists in favorites
-      const checkRes = await fetch(
-        `http://localhost:3000/favorites?userId=${loggedInUser.id}&recipeId=${id}`
-      );
-      const existing = await checkRes.json();
-      if (existing.length > 0) {
-        setIsFavorite(true);
-        alert("Recipe already in favorites ❤️");
-        return;
-      }
-
-      // ❤️ ADDED – Create favorite record in "favorites" collection
-      await fetch(`http://localhost:3000/favorites`, {
+      const res = await fetch("http://localhost:3000/favorites", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId: loggedInUser.id,
-          recipeId: Number(id),
-          title: recipe.title,
-          image: recipe.image,
-        }),
+        body: JSON.stringify({ ...newFavorite, userId: loggedInUser.id }),
       });
-
-      setIsFavorite(true);
-      alert("Recipe added to your favorites ❤️");
-    } catch (error) {
-      console.error("Error adding to favorites:", error);
-      alert("Failed to save recipe. Try again later.");
+      if (res.ok) {
+        setIsFavorite(true);
+        alert("Recipe added to favorites ❤️");
+      } else {
+        alert("Failed to add favorite.");
+      }
+    } catch (err) {
+      console.error("Error adding favorite:", err);
     }
   };
 
   if (loading) return <p>Loading recipe details...</p>;
-  if (!recipe) return <p>Recipe not found!</p>;
+  if (!recipe) return <p>Recipe not found.</p>;
 
   return (
-    <div className="recipe-details">
-      <h1 className="recipe-title">{recipe.title}</h1>
+    <div className="recipe-details" style={{ padding: "2rem" }}>
+      <h1 className="recipe-title" style={{ textAlign: "center", marginBottom: "1rem" }}>
+        {recipe.title}
+      </h1>
 
-      <div className="recipe-header">
-        <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+      <div className="recipe-header" style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", justifyContent: "center" }}>
+        <img
+          src={recipe.image}
+          alt={recipe.title}
+          className="recipe-image"
+          style={{ width: "100%", maxWidth: "400px", borderRadius: "10px" }}
+        />
 
-        <div className="recipe-info">
+        <div className="recipe-info" style={{ maxWidth: "600px" }}>
           <h3>Ready in {recipe.readyInMinutes} minutes</h3>
           <h3>Servings: {recipe.servings}</h3>
           <p dangerouslySetInnerHTML={{ __html: recipe.summary }}></p>
 
-          {/* ❤️ ADDED – Save to Favorites button */}
           <button
             onClick={handleAddToFavorites}
             disabled={isFavorite}
@@ -111,32 +121,32 @@ const RecipeDetails = () => {
         </div>
       </div>
 
-      <div className="recipe-section">
+      <div className="recipe-section" style={{ marginTop: "2rem" }}>
         <h2>Ingredients 🧂</h2>
-        <ul className="ingredient-list">
+        <ul>
           {recipe.extendedIngredients?.map((ing) => (
             <li key={ing.id}>{ing.original}</li>
           ))}
         </ul>
       </div>
 
-      <div className="recipe-section">
+      <div className="recipe-section" style={{ marginTop: "2rem" }}>
         <h2>Instructions 👩‍🍳</h2>
         {recipe.analyzedInstructions?.length > 0 ? (
-          <ol className="instruction-list">
+          <ol>
             {recipe.analyzedInstructions[0].steps.map((step) => (
               <li key={step.number}>{step.step}</li>
             ))}
           </ol>
         ) : (
-          <p>No instructions provided.</p>
+          <p>No instructions available.</p>
         )}
       </div>
 
-      {recipe.nutrition && (
-        <div className="recipe-section">
+      {recipe.nutrition && recipe.nutrition.nutrients && (
+        <div className="recipe-section" style={{ marginTop: "2rem" }}>
           <h2>Nutrition Facts 🥗</h2>
-          <ul className="nutrition-list">
+          <ul>
             {recipe.nutrition.nutrients.slice(0, 5).map((n) => (
               <li key={n.name}>
                 {n.name}: {Math.round(n.amount)} {n.unit}
