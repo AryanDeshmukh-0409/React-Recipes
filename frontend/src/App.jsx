@@ -8,7 +8,8 @@ import RecipeDetails from "./pages/Recipedetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Favorites from "./pages/Favorites";
-
+import CustomRecipes from "./pages/CustomRecipe";
+import PublicRecipes from "./pages/PublicRecipe";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -45,10 +46,16 @@ function App() {
           <Route path="/login" element={<Login setLoggedInUser={setLoggedInUser} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/favorites" element={<Favorites />} />
-
+          <Route path="/public-recipes" element={<PublicRecipes />} />
+          <Route path="/custom-recipes" element={<CustomRecipes />} />
           <Route path="/guest/home" element={<Home />} />
           <Route path="/guest/search" element={<SearchRecipes />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
+          {/* Existing Spoonacular recipes */}
+  <Route path="/recipes/:id" element={<RecipeDetails />} />
+
+  {/* ✅ Custom/Public recipes */}
+  <Route path="/recipes/custom/:id" element={<RecipeDetails />} />
         </Routes>
       </div>
     </>

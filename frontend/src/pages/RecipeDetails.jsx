@@ -10,49 +10,65 @@ const RecipeDetails = () => {
   const apiKey = import.meta.env.VITE_SPOONACULAR_KEY;
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  // Fetch recipe details from Spoonacular
+  // Detect if recipe is custom/public
+  const isCustom = window.location.pathname.includes("/custom/");
+
   useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
+  const fetchRecipe = async () => {
+    try {
+      // Check if it's a custom/public recipe
+      const isCustom = window.location.pathname.includes("/custom/");
+      let data;
+
+      if (isCustom) {
+        const res = await fetch(`http://localhost:3000/customRecipes/${id}`);
+        data = await res.json();
+      } else {
         const res = await fetch(
           `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${apiKey}`
         );
-        const data = await res.json();
-        setRecipe(data);
-      } catch (err) {
-        console.error("Error fetching recipe:", err);
-      } finally {
-        setLoading(false);
+        data = await res.json();
       }
-    };
-    fetchRecipe();
-  }, [id]);
+
+      setRecipe(data);
+    } catch (err) {
+      console.error("Error fetching recipe:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchRecipe();
+}, [id]);
+
 
   // Check if already favorite
   useEffect(() => {
     const checkFavorite = async () => {
       if (!loggedInUser) return;
-      if (loggedInUser && loggedInUser.id) {
-        const res = await fetch(`http://localhost:3000/favorites?userId=${loggedInUser.id}&recipeId=${id}`);
+      if (!isCustom && loggedInUser.id) {
+        const res = await fetch(
+          `http://localhost:3000/favorites?userId=${loggedInUser.id}&recipeId=${id}`
+        );
         const data = await res.json();
         setIsFavorite(data.length > 0);
       } else {
         const localFavs = JSON.parse(localStorage.getItem("favorites")) || [];
-        setIsFavorite(localFavs.some((f) => f.recipeId === parseInt(id)));
+        setIsFavorite(localFavs.some((f) => f.recipeId === id || f.recipeId === parseInt(id)));
       }
     };
     checkFavorite();
-  }, [id]);
+  }, [id, isCustom]);
 
   const handleAddToFavorites = async () => {
     if (!recipe) return;
+
     const newFavorite = {
       recipeId: recipe.id,
       title: recipe.title,
       image: recipe.image,
     };
 
-    // ✅ Guest user → localStorage
     if (!loggedInUser || !loggedInUser.id) {
       const guestFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
       const exists = guestFavorites.some((fav) => fav.recipeId === recipe.id);
@@ -63,7 +79,6 @@ const RecipeDetails = () => {
       return;
     }
 
-    // ✅ Logged-in user → JSON server
     try {
       const res = await fetch("http://localhost:3000/favorites", {
         method: "POST",
@@ -85,24 +100,22 @@ const RecipeDetails = () => {
   if (!recipe) return <p>Recipe not found.</p>;
 
   return (
-    <div className="recipe-details" style={{ padding: "2rem" }}>
-      <h1 className="recipe-title" style={{ textAlign: "center", marginBottom: "1rem" }}>
-        {recipe.title}
-      </h1>
-
-      <div className="recipe-header" style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", justifyContent: "center" }}>
+    <div style={{ padding: "2rem" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>{recipe.title}</h1>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", justifyContent: "center" }}>
         <img
           src={recipe.image}
           alt={recipe.title}
-          className="recipe-image"
           style={{ width: "100%", maxWidth: "400px", borderRadius: "10px" }}
         />
-
-        <div className="recipe-info" style={{ maxWidth: "600px" }}>
-          <h3>Ready in {recipe.readyInMinutes} minutes</h3>
-          <h3>Servings: {recipe.servings}</h3>
-          <p dangerouslySetInnerHTML={{ __html: recipe.summary }}></p>
-
+        <div style={{ maxWidth: "600px" }}>
+          {!isCustom && (
+            <>
+              <h3>Ready in {recipe.readyInMinutes} minutes</h3>
+              <h3>Servings: {recipe.servings}</h3>
+            </>
+          )}
+          <p>{isCustom ? recipe.instructions : recipe.summary}</p>
           <button
             onClick={handleAddToFavorites}
             disabled={isFavorite}
@@ -121,39 +134,36 @@ const RecipeDetails = () => {
         </div>
       </div>
 
-      <div className="recipe-section" style={{ marginTop: "2rem" }}>
-        <h2>Ingredients 🧂</h2>
-        <ul>
-          {recipe.extendedIngredients?.map((ing) => (
-            <li key={ing.id}>{ing.original}</li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="recipe-section" style={{ marginTop: "2rem" }}>
-        <h2>Instructions 👩‍🍳</h2>
-        {recipe.analyzedInstructions?.length > 0 ? (
-          <ol>
-            {recipe.analyzedInstructions[0].steps.map((step) => (
-              <li key={step.number}>{step.step}</li>
-            ))}
-          </ol>
-        ) : (
-          <p>No instructions available.</p>
-        )}
-      </div>
-
-      {recipe.nutrition && recipe.nutrition.nutrients && (
-        <div className="recipe-section" style={{ marginTop: "2rem" }}>
-          <h2>Nutrition Facts 🥗</h2>
-          <ul>
-            {recipe.nutrition.nutrients.slice(0, 5).map((n) => (
-              <li key={n.name}>
-                {n.name}: {Math.round(n.amount)} {n.unit}
-              </li>
-            ))}
-          </ul>
+      {isCustom ? (
+        <div style={{ marginTop: "2rem" }}>
+          <h2>Ingredients 🧂</h2>
+          <p>{recipe.ingredients}</p>
+          <h2>Instructions 👩‍🍳</h2>
+          <p>{recipe.instructions}</p>
         </div>
+      ) : (
+        <>
+          <div style={{ marginTop: "2rem" }}>
+            <h2>Ingredients 🧂</h2>
+            <ul>
+              {recipe.extendedIngredients?.map((ing) => (
+                <li key={ing.id}>{ing.original}</li>
+              ))}
+            </ul>
+          </div>
+          <div style={{ marginTop: "2rem" }}>
+            <h2>Instructions 👩‍🍳</h2>
+            {recipe.analyzedInstructions?.length > 0 ? (
+              <ol>
+                {recipe.analyzedInstructions[0].steps.map((step) => (
+                  <li key={step.number}>{step.step}</li>
+                ))}
+              </ol>
+            ) : (
+              <p>No instructions available.</p>
+            )}
+          </div>
+        </>
       )}
     </div>
   );

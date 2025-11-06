@@ -43,7 +43,7 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
           Recipes
         </NavLink>
 
-        {/* ✅ Show "Favorites" only if the user is logged in */}
+        {/* ✅ Favorites only for logged-in users */}
         {loggedInUser && (
           <NavLink
             to="/favorites"
@@ -67,7 +67,29 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
         >
           Meal Planner
         </NavLink>
+
+        {/* ✅ New Custom Recipes link */}
+        <NavLink
+          to="/custom-recipes"
+          style={({ isActive }) => ({
+            color: isActive ? "#007bff" : "#333",
+            textDecoration: "none",
+            fontWeight: "500",
+          })}
+        >
+          Custom Recipes
+        </NavLink>
       </div>
+       <NavLink
+  to="/public-recipes"
+  style={({ isActive }) => ({
+    color: isActive ? "#007bff" : "#333",
+    textDecoration: "none",
+    fontWeight: "500",
+  })}
+>
+  Public Recipes
+</NavLink>
 
       {/* Logged-in user section */}
       {loggedInUser && (
@@ -81,6 +103,8 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
             padding: "6px 12px",
           }}
         >
+         
+
           <div
             style={{
               width: "36px",
@@ -111,3 +135,4 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
 }
 
 export default Navbar;
+

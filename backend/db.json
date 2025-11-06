@@ -65,6 +65,15 @@
       "ingredients": "Flour, Sugar, Love",
       "instructions": "Mix and bake.",
       "image": "https://placehold.co/312x231/eee/ccc?text=My+Recipe"
+    },
+    {
+      "id": "1762396476912",
+      "userId": "1761985781001",
+      "title": "french fries",
+      "ingredients": "potatoes , salt ",
+      "instructions": "test 1",
+      "isPublic": true,
+      "image": "https://placehold.co/312x231/eee/ccc?text=My+Recipe"
     }
   ]
 }
