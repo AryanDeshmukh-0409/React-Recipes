@@ -52,8 +52,13 @@ function Login({ setLoggedInUser }) {
           localStorage.removeItem("favorites"); // clear guest favorites
         }
         // --- END MERGE LOGIC ---
+if (foundUser.isAdmin) {
+  setTimeout(() => navigate("/admin/dashboard"), 1500);
+} else {
+  setTimeout(() => navigate("/guest/home"), 1500);
+}
 
-        setTimeout(() => navigate("/guest/home"), 1500);
+
       } else {
         setError("Invalid email or password. Please try again.");
       }

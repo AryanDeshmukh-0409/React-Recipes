@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import AccessPage from "./pages/AccessPage";
 import Home from "./pages/Home";
@@ -13,6 +14,7 @@ import PublicRecipes from "./pages/PublicRecipe";
 import AdvancedSearch from "./pages/AdvanceSearch";
 import MealPlanner from "./pages/MealPlanner";
 import MealPlans from "./pages/MealPlans";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -57,6 +59,20 @@ function App() {
           <Route path="/advanced-search" element={<AdvancedSearch />} />
           <Route path="/guest/search" element={<SearchRecipes />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
+
+          //Admin Dashboard Route
+          <Route
+  path="/admin/dashboard"
+  element={
+    loggedInUser && loggedInUser.isAdmin ? (
+      <AdminDashboard />
+    ) : (
+      <Navigate to="/" replace />
+    )
+  }
+/>
+
+
           {/* Existing Spoonacular recipes */}
   <Route path="/recipes/:id" element={<RecipeDetails />} />
 

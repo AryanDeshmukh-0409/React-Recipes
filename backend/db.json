@@ -13,6 +13,13 @@
       "email": "deshmukharyan68@gmail.com",
       "password": "123456789",
       "isAdmin": false
+    },
+    {
+      "id": "999",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "password": "admin123",
+      "isAdmin": true
     }
   ],
   "favorites": [
@@ -322,14 +329,6 @@
       "rating": 5,
       "comment": "This was a fantastic recipe!",
       "date": "2025-10-28T12:00:00Z"
-    },
-    {
-      "id": "e6f3",
-      "recipeId": 660322,
-      "userId": "1761985781001",
-      "rating": 5,
-      "comment": "test 1",
-      "date": "2025-11-07T08:15:04.794Z"
     },
     {
       "id": "2a44",
