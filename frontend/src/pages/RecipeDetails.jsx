@@ -101,6 +101,30 @@ const RecipeDetails = () => {
     }
   };
 
+  // 📤 Share handlers (copy / twitter / whatsapp / email)
+  const handleShare = (platform) => {
+    const url = window.location.href;
+    const text = `Check out this recipe: ${recipe?.title || ""}`;
+    if (platform === "copy") {
+      // clipboard API with fallback
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          alert("Link copied to clipboard!");
+        }).catch(() => {
+          prompt("Copy this link:", url);
+        });
+      } else {
+        prompt("Copy this link:", url);
+      }
+    } else if (platform === "twitter") {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, "_blank");
+    } else if (platform === "whatsapp") {
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text + " " + url)}`, "_blank");
+    } else if (platform === "email") {
+      window.open(`mailto:?subject=${encodeURIComponent(text)}&body=${encodeURIComponent(url)}`);
+    }
+  };
+
   // Handle review form
   const handleReviewChange = (e) => {
     const { name, value } = e.target;
@@ -182,6 +206,14 @@ const RecipeDetails = () => {
           >
             {isFavorite ? "Saved ❤️" : "Save to Favorites"}
           </button>
+
+          {/* 🔗 Share Buttons (added, rest unchanged) */}
+          <div style={{ display: "flex", gap: "0.7rem", marginTop: "1rem", flexWrap: "wrap" }}>
+            <button onClick={() => handleShare("copy")} style={shareBtnStyle}>📋 Copy Link</button>
+            <button onClick={() => handleShare("twitter")} style={shareBtnStyle}>🐦 Twitter</button>
+            <button onClick={() => handleShare("whatsapp")} style={shareBtnStyle}>💬 WhatsApp</button>
+            <button onClick={() => handleShare("email")} style={shareBtnStyle}>✉️ Email</button>
+          </div>
         </div>
       </div>
 
@@ -328,6 +360,19 @@ const RecipeDetails = () => {
       </div>
     </div>
   );
+};
+
+// Modern share button style (kept separate so it's reusable)
+const shareBtnStyle = {
+  backgroundColor: "#007bff",
+  color: "#fff",
+  border: "none",
+  borderRadius: "6px",
+  padding: "8px 14px",
+  fontSize: "0.9rem",
+  cursor: "pointer",
+  transition: "background 0.2s",
+  fontWeight: "500",
 };
 
 export default RecipeDetails;
