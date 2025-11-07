@@ -45,6 +45,273 @@
         },
         "tuesday": {}
       }
+    },
+    {
+      "id": "7fe0",
+      "userId": "1761985781001",
+      "name": "Weekly Plan (2025-11-07)",
+      "week": "2025-11-07",
+      "planData": {
+        "monday": {
+          "meals": [
+            {
+              "id": 640767,
+              "image": "Crepes-Suzette-640767.jpg",
+              "imageType": "jpg",
+              "title": "Crepes Suzette",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/KD8ZMRJ6/crepes-suzette"
+            },
+            {
+              "id": 642585,
+              "image": "Farfalle-with-fresh-tomatoes--basil-and-mozzarella-642585.jpg",
+              "imageType": "jpg",
+              "title": "Farfalle with fresh tomatoes, basil and mozzarella",
+              "readyInMinutes": 15,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/B6CC3QXM/farfalle-with-fresh-tomatoes-basil-and-mozzarella"
+            },
+            {
+              "id": 635964,
+              "image": "Bread-Omlette-635964.jpg",
+              "imageType": "jpg",
+              "title": "Bread Omlette",
+              "readyInMinutes": 45,
+              "servings": 1,
+              "sourceUrl": "https://www.foodista.com/recipe/2M6MVKZT/bread-omlette"
+            }
+          ],
+          "nutrients": {
+            "calories": 2000.56,
+            "protein": 72.21,
+            "fat": 84.98,
+            "carbohydrates": 234.75
+          }
+        },
+        "tuesday": {
+          "meals": [
+            {
+              "id": 658624,
+              "image": "Roasted-Plum-Oatmeal-658624.jpg",
+              "imageType": "jpg",
+              "title": "Roasted Plum Oatmeal",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/2ZWYP8RM/roasted-plum-oatmeal"
+            },
+            {
+              "id": 642777,
+              "image": "Fig-and-Goat-Cheese-Pizza-With-Pesto-642777.jpg",
+              "imageType": "jpg",
+              "title": "Fig and Goat Cheese Pizza With Pesto",
+              "readyInMinutes": 15,
+              "servings": 6,
+              "sourceUrl": "https://www.foodista.com/recipe/KFX4GS4M/fig-and-goat-cheese-pizza-with-pesto"
+            },
+            {
+              "id": 663225,
+              "image": "The-Best-Of-England-Salad-663225.jpg",
+              "imageType": "jpg",
+              "title": "The Best Of England Salad",
+              "readyInMinutes": 45,
+              "servings": 1,
+              "sourceUrl": "https://www.foodista.com/recipe/6T7RKVV2/the-best-of-england-salad"
+            }
+          ],
+          "nutrients": {
+            "calories": 2000.01,
+            "protein": 64.29,
+            "fat": 125.76,
+            "carbohydrates": 164.76
+          }
+        },
+        "wednesday": {
+          "meals": [
+            {
+              "id": 640767,
+              "image": "Crepes-Suzette-640767.jpg",
+              "imageType": "jpg",
+              "title": "Crepes Suzette",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/KD8ZMRJ6/crepes-suzette"
+            },
+            {
+              "id": 652417,
+              "image": "Moroccan-chickpea-and-lentil-stew-652417.jpg",
+              "imageType": "jpg",
+              "title": "Moroccan chickpea and lentil stew",
+              "readyInMinutes": 30,
+              "servings": 3,
+              "sourceUrl": "https://www.foodista.com/recipe/C6DXLHJH/moroccan-chickpea-and-lentil-stew"
+            },
+            {
+              "id": 663225,
+              "image": "The-Best-Of-England-Salad-663225.jpg",
+              "imageType": "jpg",
+              "title": "The Best Of England Salad",
+              "readyInMinutes": 45,
+              "servings": 1,
+              "sourceUrl": "https://www.foodista.com/recipe/6T7RKVV2/the-best-of-england-salad"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.87,
+            "protein": 63.63,
+            "fat": 102.53,
+            "carbohydrates": 214.76
+          }
+        },
+        "thursday": {
+          "meals": [
+            {
+              "id": 649824,
+              "image": "Lemon-Zucchini-Muffins-649824.jpg",
+              "imageType": "jpg",
+              "title": "Lemon Zucchini Muffins",
+              "readyInMinutes": 45,
+              "servings": 10,
+              "sourceUrl": "https://www.foodista.com/recipe/TWXM6CPR/lemon-zucchini-muffins"
+            },
+            {
+              "id": 1697541,
+              "image": "pasta-with-feta-cheese-and-asparagus-1697541.jpg",
+              "imageType": "jpg",
+              "title": "Pasta With Feta Cheese And Asparagus",
+              "readyInMinutes": 20,
+              "servings": 2,
+              "sourceUrl": "https://maplewoodroad.com/pasta-with-feta-cheese-and-asparagus/"
+            },
+            {
+              "id": 657651,
+              "image": "Quick-Veggie-Stir-Fry-657651.jpg",
+              "imageType": "jpg",
+              "title": "Quick Veggie Stir-Fry",
+              "readyInMinutes": 45,
+              "servings": 1,
+              "sourceUrl": "https://www.foodista.com/recipe/JQYJXV3Y/quick-veggie-stir-fry"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.93,
+            "protein": 65.2,
+            "fat": 95.86,
+            "carbohydrates": 233.59
+          }
+        },
+        "friday": {
+          "meals": [
+            {
+              "id": 646982,
+              "image": "Homemade-Eggs-Benedict-646982.jpg",
+              "imageType": "jpg",
+              "title": "Meatless Eggs Benedict",
+              "readyInMinutes": 25,
+              "servings": 2,
+              "sourceUrl": "http://www.foodista.com/recipe/X8RJBK5X/homemade-eggs-benedict"
+            },
+            {
+              "id": 715769,
+              "image": "broccolini-quinoa-pilaf-715769.jpg",
+              "imageType": "jpg",
+              "title": "Broccolini Quinoa Pilaf",
+              "readyInMinutes": 30,
+              "servings": 2,
+              "sourceUrl": "https://pickfreshfoods.com/broccolini-quinoa-pilaf/"
+            },
+            {
+              "id": 994607,
+              "image": "kaiserschmarrn-994607.jpg",
+              "imageType": "jpg",
+              "title": "Kaiserschmarrn",
+              "readyInMinutes": 50,
+              "servings": 2,
+              "sourceUrl": "https://spoonacular.com/site-1522954610439"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.37,
+            "protein": 68.66,
+            "fat": 106.91,
+            "carbohydrates": 193.25
+          }
+        },
+        "saturday": {
+          "meals": [
+            {
+              "id": 635446,
+              "image": "Blueberry-Cinnamon-Porridge-635446.jpg",
+              "imageType": "jpg",
+              "title": "Blueberry Cinnamon Porridge",
+              "readyInMinutes": 45,
+              "servings": 1,
+              "sourceUrl": "https://www.foodista.com/recipe/2HVQB6LT/blueberry-cinnamon-porridge"
+            },
+            {
+              "id": 638780,
+              "image": "Chock-Full-Of-Broccoli-Soup-638780.jpg",
+              "imageType": "jpg",
+              "title": "Chock Full Of Broccoli Soup",
+              "readyInMinutes": 30,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/MYJMGP67/chock-full-of-broccoli-soup"
+            },
+            {
+              "id": 657651,
+              "image": "Quick-Veggie-Stir-Fry-657651.jpg",
+              "imageType": "jpg",
+              "title": "Quick Veggie Stir-Fry",
+              "readyInMinutes": 45,
+              "servings": 1,
+              "sourceUrl": "https://www.foodista.com/recipe/JQYJXV3Y/quick-veggie-stir-fry"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.98,
+            "protein": 52.96,
+            "fat": 132.93,
+            "carbohydrates": 178.57
+          }
+        },
+        "sunday": {
+          "meals": [
+            {
+              "id": 635394,
+              "image": "Blueberry---Orange-Maple-Scones-635394.jpg",
+              "imageType": "jpg",
+              "title": "Blueberry & Orange Maple Scones",
+              "readyInMinutes": 45,
+              "servings": 16,
+              "sourceUrl": "https://www.foodista.com/recipe/4FW7FLXJ/blueberry-orange-maple-scones"
+            },
+            {
+              "id": 1697541,
+              "image": "pasta-with-feta-cheese-and-asparagus-1697541.jpg",
+              "imageType": "jpg",
+              "title": "Pasta With Feta Cheese And Asparagus",
+              "readyInMinutes": 20,
+              "servings": 2,
+              "sourceUrl": "https://maplewoodroad.com/pasta-with-feta-cheese-and-asparagus/"
+            },
+            {
+              "id": 663225,
+              "image": "The-Best-Of-England-Salad-663225.jpg",
+              "imageType": "jpg",
+              "title": "The Best Of England Salad",
+              "readyInMinutes": 45,
+              "servings": 1,
+              "sourceUrl": "https://www.foodista.com/recipe/6T7RKVV2/the-best-of-england-salad"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.97,
+            "protein": 65.37,
+            "fat": 104.48,
+            "carbohydrates": 206.24
+          }
+        }
+      }
     }
   ],
   "reviews": [

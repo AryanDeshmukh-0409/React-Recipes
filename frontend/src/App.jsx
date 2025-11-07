@@ -10,6 +10,9 @@ import Signup from "./pages/Signup";
 import Favorites from "./pages/Favorites";
 import CustomRecipes from "./pages/CustomRecipe";
 import PublicRecipes from "./pages/PublicRecipe";
+import AdvancedSearch from "./pages/AdvanceSearch";
+import MealPlanner from "./pages/MealPlanner";
+import MealPlans from "./pages/MealPlans";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -49,6 +52,9 @@ function App() {
           <Route path="/public-recipes" element={<PublicRecipes />} />
           <Route path="/custom-recipes" element={<CustomRecipes />} />
           <Route path="/guest/home" element={<Home />} />
+          <Route path="/meal-planner" element={<MealPlanner />} />
+          <Route path="/meal-plans" element={<MealPlans />} />
+          <Route path="/advanced-search" element={<AdvancedSearch />} />
           <Route path="/guest/search" element={<SearchRecipes />} />
           <Route path="/recipes/:id" element={<RecipeDetails />} />
           {/* Existing Spoonacular recipes */}

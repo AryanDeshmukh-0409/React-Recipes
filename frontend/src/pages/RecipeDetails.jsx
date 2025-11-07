@@ -14,33 +14,28 @@ const RecipeDetails = () => {
   const isCustom = window.location.pathname.includes("/custom/");
 
   useEffect(() => {
-  const fetchRecipe = async () => {
-    try {
-      // Check if it's a custom/public recipe
-      const isCustom = window.location.pathname.includes("/custom/");
-      let data;
-
-      if (isCustom) {
-        const res = await fetch(`http://localhost:3000/customRecipes/${id}`);
-        data = await res.json();
-      } else {
-        const res = await fetch(
-          `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${apiKey}`
-        );
-        data = await res.json();
+    const fetchRecipe = async () => {
+      try {
+        let data;
+        if (isCustom) {
+          const res = await fetch(`http://localhost:3000/customRecipes/${id}`);
+          data = await res.json();
+        } else {
+          const res = await fetch(
+            `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${apiKey}`
+          );
+          data = await res.json();
+        }
+        setRecipe(data);
+      } catch (err) {
+        console.error("Error fetching recipe:", err);
+      } finally {
+        setLoading(false);
       }
+    };
 
-      setRecipe(data);
-    } catch (err) {
-      console.error("Error fetching recipe:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchRecipe();
-}, [id]);
-
+    fetchRecipe();
+  }, [id, isCustom, apiKey]);
 
   // Check if already favorite
   useEffect(() => {
@@ -58,7 +53,7 @@ const RecipeDetails = () => {
       }
     };
     checkFavorite();
-  }, [id, isCustom]);
+  }, [id, isCustom, loggedInUser]);
 
   const handleAddToFavorites = async () => {
     if (!recipe) return;
@@ -96,26 +91,60 @@ const RecipeDetails = () => {
     }
   };
 
-  if (loading) return <p>Loading recipe details...</p>;
-  if (!recipe) return <p>Recipe not found.</p>;
+  if (loading) return <p style={{ textAlign: "center" }}>Loading recipe details...</p>;
+  if (!recipe) return <p style={{ textAlign: "center" }}>Recipe not found.</p>;
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>{recipe.title}</h1>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", justifyContent: "center" }}>
+    <div
+      style={{
+        padding: "2rem",
+        maxWidth: "900px",
+        margin: "0 auto",
+        fontFamily: "Arial, sans-serif",
+      }}
+    >
+      <h1 style={{ textAlign: "center", marginBottom: "1.5rem", color: "#ff4757" }}>
+        {recipe.title}
+      </h1>
+
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "2rem",
+          justifyContent: "center",
+          background: "#fff",
+          padding: "1.5rem",
+          borderRadius: "10px",
+          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        }}
+      >
         <img
           src={recipe.image}
           alt={recipe.title}
-          style={{ width: "100%", maxWidth: "400px", borderRadius: "10px" }}
+          style={{
+            width: "100%",
+            maxWidth: "400px",
+            borderRadius: "10px",
+            objectFit: "cover",
+          }}
         />
-        <div style={{ maxWidth: "600px" }}>
+        <div style={{ maxWidth: "500px" }}>
           {!isCustom && (
             <>
-              <h3>Ready in {recipe.readyInMinutes} minutes</h3>
-              <h3>Servings: {recipe.servings}</h3>
+              <h3 style={{ marginBottom: "0.5rem" }}>Ready in {recipe.readyInMinutes} mins</h3>
+              <h3 style={{ marginBottom: "1rem" }}>Servings: {recipe.servings}</h3>
             </>
           )}
-          <p>{isCustom ? recipe.instructions : recipe.summary}</p>
+
+          {/* Render HTML safely */}
+          <div
+            style={{ lineHeight: "1.6", color: "#333" }}
+            dangerouslySetInnerHTML={{
+              __html: isCustom ? recipe.instructions : recipe.summary,
+            }}
+          />
+
           <button
             onClick={handleAddToFavorites}
             disabled={isFavorite}
@@ -126,7 +155,8 @@ const RecipeDetails = () => {
               padding: "10px 20px",
               cursor: isFavorite ? "not-allowed" : "pointer",
               borderRadius: "8px",
-              marginTop: "15px",
+              marginTop: "20px",
+              fontWeight: "bold",
             }}
           >
             {isFavorite ? "Saved ❤️" : "Save to Favorites"}
@@ -134,37 +164,34 @@ const RecipeDetails = () => {
         </div>
       </div>
 
-      {isCustom ? (
-        <div style={{ marginTop: "2rem" }}>
-          <h2>Ingredients 🧂</h2>
-          <p>{recipe.ingredients}</p>
-          <h2>Instructions 👩‍🍳</h2>
-          <p>{recipe.instructions}</p>
-        </div>
-      ) : (
-        <>
-          <div style={{ marginTop: "2rem" }}>
-            <h2>Ingredients 🧂</h2>
-            <ul>
-              {recipe.extendedIngredients?.map((ing) => (
-                <li key={ing.id}>{ing.original}</li>
-              ))}
-            </ul>
-          </div>
-          <div style={{ marginTop: "2rem" }}>
-            <h2>Instructions 👩‍🍳</h2>
-            {recipe.analyzedInstructions?.length > 0 ? (
-              <ol>
-                {recipe.analyzedInstructions[0].steps.map((step) => (
-                  <li key={step.number}>{step.step}</li>
-                ))}
-              </ol>
-            ) : (
-              <p>No instructions available.</p>
-            )}
-          </div>
-        </>
-      )}
+      {/* Ingredients & Instructions Section */}
+      <div style={{ marginTop: "2rem" }}>
+        <h2 style={{ color: "#ff4757", marginBottom: "1rem" }}>Ingredients 🧂</h2>
+        {isCustom ? (
+          <p style={{ lineHeight: "1.6" }}>{recipe.ingredients}</p>
+        ) : (
+          <ul style={{ lineHeight: "1.6", color: "#333" }}>
+            {recipe.extendedIngredients?.map((ing) => (
+              <li key={ing.id}>{ing.original}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div style={{ marginTop: "2rem" }}>
+        <h2 style={{ color: "#ff4757", marginBottom: "1rem" }}>Instructions 👩‍🍳</h2>
+        {isCustom ? (
+          <p style={{ lineHeight: "1.6" }}>{recipe.instructions}</p>
+        ) : recipe.analyzedInstructions?.length > 0 ? (
+          <ol style={{ lineHeight: "1.6", color: "#333" }}>
+            {recipe.analyzedInstructions[0].steps.map((step) => (
+              <li key={step.number}>{step.step}</li>
+            ))}
+          </ol>
+        ) : (
+          <p style={{ lineHeight: "1.6" }}>No instructions available.</p>
+        )}
+      </div>
     </div>
   );
 };

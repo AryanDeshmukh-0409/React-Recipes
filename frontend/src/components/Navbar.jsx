@@ -58,15 +58,28 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
         )}
 
         <NavLink
-          to="/mealplanner"
-          style={({ isActive }) => ({
-            color: isActive ? "#007bff" : "#333",
-            textDecoration: "none",
-            fontWeight: "500",
-          })}
-        >
-          Meal Planner
-        </NavLink>
+  to="/meal-planner"
+  style={({ isActive }) => ({
+    color: isActive ? "#007bff" : "#333",
+    textDecoration: "none",
+    fontWeight: "500",
+  })}
+>
+  Meal Planner
+</NavLink>
+
+<NavLink
+  to="/meal-plans"
+  style={({ isActive }) => ({
+    color: isActive ? "#007bff" : "#333",
+    textDecoration: "none",
+    fontWeight: "500",
+  })}
+>
+  Meal Plans
+</NavLink>
+
+
 
         {/* ✅ New Custom Recipes link */}
         <NavLink
