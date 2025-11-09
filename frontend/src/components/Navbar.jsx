@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
   return (
+    
     <nav
       style={{
         display: "flex",
@@ -93,6 +94,22 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
           Custom Recipes
         </NavLink>
       </div>
+
+      {/* ✅ Admin Dashboard link (visible only for admins) */}
+{loggedInUser?.isAdmin && (
+  <NavLink
+    to="/admin/dashboard"
+    style={({ isActive }) => ({
+      color: isActive ? "#007bff" : "#333",
+      textDecoration: "none",
+      fontWeight: "500",
+    })}
+  >
+    Dashboard
+  </NavLink>
+)}
+
+
        <NavLink
   to="/public-recipes"
   style={({ isActive }) => ({
@@ -103,6 +120,9 @@ function Navbar({ loggedInUser, setLoggedInUser, onLogout }) {
 >
   Public Recipes
 </NavLink>
+
+
+
 
       {/* Logged-in user section */}
       {loggedInUser && (

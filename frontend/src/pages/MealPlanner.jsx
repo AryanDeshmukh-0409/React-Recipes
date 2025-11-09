@@ -13,7 +13,15 @@ const MealPlanner = () => {
   const apiKey = import.meta.env.VITE_SPOONACULAR_KEY;
   const navigate = useNavigate();
 
-  const days = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+  const days = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
+  ];
 
   // Handle input change
   const handleChange = (e) => {
@@ -30,7 +38,6 @@ const MealPlanner = () => {
       const newPlan = {};
 
       for (let day of days) {
-        // API call for each day
         const res = await fetch(
           `https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories=${criteria.targetCalories}&diet=${criteria.diet}&apiKey=${apiKey}`
         );
@@ -73,28 +80,68 @@ const MealPlanner = () => {
   };
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>📅 Weekly Meal Planner</h1>
+    <div
+      style={{
+        padding: "2rem",
+        fontFamily: "'Poppins', sans-serif",
+        backgroundColor: "#f8f9fa",
+        minHeight: "100vh",
+      }}
+    >
+      <h1
+        style={{
+          textAlign: "center",
+          marginBottom: "1.5rem",
+          color: "#333",
+          fontSize: "2rem",
+        }}
+      >
+        📅 Weekly Meal Planner
+      </h1>
 
-      <div style={{ maxWidth: "400px", margin: "0 auto 2rem" }}>
-        <label>
+      {/* Criteria Section */}
+      <div
+        style={{
+          maxWidth: "450px",
+          margin: "0 auto 2rem",
+          background: "white",
+          padding: "1.5rem",
+          borderRadius: "10px",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+        }}
+      >
+        <label style={{ fontWeight: "600", color: "#333" }}>
           Target Calories:
           <input
             type="number"
             name="targetCalories"
             value={criteria.targetCalories}
             onChange={handleChange}
-            style={{ width: "100%", padding: "8px", marginTop: "4px", marginBottom: "10px" }}
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginTop: "8px",
+              marginBottom: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+            }}
           />
         </label>
 
-        <label>
+        <label style={{ fontWeight: "600", color: "#333" }}>
           Diet (optional):
           <select
             name="diet"
             value={criteria.diet}
             onChange={handleChange}
-            style={{ width: "100%", padding: "8px", marginTop: "4px", marginBottom: "10px" }}
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginTop: "8px",
+              marginBottom: "16px",
+              border: "1px solid #ccc",
+              borderRadius: "6px",
+            }}
           >
             <option value="">None</option>
             <option value="vegetarian">Vegetarian</option>
@@ -110,44 +157,110 @@ const MealPlanner = () => {
             backgroundColor: "#1e90ff",
             color: "white",
             border: "none",
-            padding: "10px 20px",
+            padding: "12px 20px",
             borderRadius: "8px",
             cursor: "pointer",
             width: "100%",
+            fontWeight: "600",
+            transition: "background 0.3s",
           }}
+          onMouseOver={(e) => (e.target.style.backgroundColor = "#007bff")}
+          onMouseOut={(e) => (e.target.style.backgroundColor = "#1e90ff")}
         >
           {loading ? "Generating..." : "Generate Plan"}
         </button>
       </div>
 
+      {/* Meal Plan Section */}
       {plan && (
         <div style={{ marginTop: "2rem" }}>
-          <h2 style={{ textAlign: "center" }}>Your 7-Day Plan</h2>
+          <h2 style={{ textAlign: "center", marginBottom: "1rem", color: "#333" }}>
+            Your 7-Day Plan
+          </h2>
           {days.map((day) => (
             <div
               key={day}
               style={{
                 border: "1px solid #ddd",
-                borderRadius: "8px",
-                padding: "1rem",
-                marginBottom: "1rem",
-                background: "#fff",
-                boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+                borderRadius: "10px",
+                padding: "1.5rem",
+                marginBottom: "1.5rem",
+                background: "white",
+                boxShadow: "0 3px 8px rgba(0,0,0,0.1)",
               }}
             >
-              <h3 style={{ textTransform: "capitalize" }}>{day}</h3>
-              {plan[day].meals?.map((meal) => (
-                <div key={meal.id} style={{ marginBottom: "8px" }}>
-                  <a
-                    href={`/recipes/${meal.id}`}
-                    style={{ color: "#1e90ff", textDecoration: "underline" }}
+              <h3
+                style={{
+                  textTransform: "capitalize",
+                  color: "#1e90ff",
+                  borderBottom: "1px solid #eee",
+                  paddingBottom: "8px",
+                  marginBottom: "1rem",
+                }}
+              >
+                {day}
+              </h3>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                  gap: "1rem",
+                }}
+              >
+                {plan[day].meals?.map((meal) => (
+                  <div
+                    key={meal.id}
+                    style={{
+                      border: "1px solid #eee",
+                      borderRadius: "10px",
+                      overflow: "hidden",
+                      boxShadow: "0 2px 5px rgba(0,0,0,0.05)",
+                      background: "#fafafa",
+                      transition: "transform 0.2s",
+                    }}
+                    onMouseOver={(e) =>
+                      (e.currentTarget.style.transform = "scale(1.02)")
+                    }
+                    onMouseOut={(e) =>
+                      (e.currentTarget.style.transform = "scale(1)")
+                    }
                   >
-                    {meal.title}
-                  </a>
-                </div>
-              ))}
-              <p>
-                <strong>Total Calories:</strong> {plan[day].nutrients?.calories || "N/A"}
+                    <img
+                      src={`https://spoonacular.com/recipeImages/${meal.id}-312x231.jpg`}
+                      alt={meal.title}
+                      style={{
+                        width: "100%",
+                        height: "160px",
+                        objectFit: "cover",
+                        borderBottom: "1px solid #ddd",
+                      }}
+                    />
+                    <div style={{ padding: "0.8rem" }}>
+                      <a
+                        href={`/recipes/${meal.id}`}
+                        style={{
+                          color: "#1e90ff",
+                          textDecoration: "none",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {meal.title}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p
+                style={{
+                  marginTop: "1rem",
+                  fontWeight: "600",
+                  color: "#555",
+                }}
+              >
+                <strong>Total Calories:</strong>{" "}
+                {plan[day].nutrients?.calories || "N/A"}
               </p>
             </div>
           ))}
@@ -159,12 +272,16 @@ const MealPlanner = () => {
                 backgroundColor: "#ff4757",
                 color: "white",
                 border: "none",
-                padding: "10px 20px",
+                padding: "12px 20px",
                 borderRadius: "8px",
                 cursor: "pointer",
                 display: "block",
-                margin: "0 auto",
+                margin: "2rem auto",
+                fontWeight: "600",
+                transition: "background 0.3s",
               }}
+              onMouseOver={(e) => (e.target.style.backgroundColor = "#e84118")}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "#ff4757")}
             >
               Save Plan
             </button>

@@ -29,6 +29,13 @@
       "recipeId": 716429,
       "title": "Pasta with Garlic, Scallions, Cherry Tomatoes and Basil",
       "image": "https://spoonacular.com/recipeImages/716429-312x231.jpg"
+    },
+    {
+      "id": "649b",
+      "recipeId": 642169,
+      "title": "Edamame Hummus",
+      "image": "https://img.spoonacular.com/recipes/642169-556x370.jpg",
+      "userId": "1761985781001"
     }
   ],
   "mealPlans": [
@@ -316,6 +323,273 @@
             "protein": 65.37,
             "fat": 104.48,
             "carbohydrates": 206.24
+          }
+        }
+      }
+    },
+    {
+      "id": "fa9b",
+      "userId": "1761985781001",
+      "name": "Weekly Plan (2025-11-09)",
+      "week": "2025-11-09",
+      "planData": {
+        "monday": {
+          "meals": [
+            {
+              "id": 655786,
+              "image": "Persimmons-Pumpkin-Orange-Smoothie-655786.jpg",
+              "imageType": "jpg",
+              "title": "Persimmons Pumpkin Orange Smoothie With Chia Seeds",
+              "readyInMinutes": 45,
+              "servings": 3,
+              "sourceUrl": "https://www.foodista.com/recipe/CZF2KGGJ/persimmons-pumpkin-orange-smoothie"
+            },
+            {
+              "id": 643634,
+              "image": "Fresh-Tomatoes-With-Beans-and-Macaroni-643634.jpg",
+              "imageType": "jpg",
+              "title": "Macaroni with Fresh Tomatoes and Beans",
+              "readyInMinutes": 25,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/LY45JTQD/fresh-tomatoes-with-beans-and-macaroni"
+            },
+            {
+              "id": 644953,
+              "image": "Goat-Cheese-Pesto-Pizza-644953.jpg",
+              "imageType": "jpg",
+              "title": "Goat Cheese Pesto Pizza",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/NYLVT4DN/goat-cheese-pesto-pizza"
+            }
+          ],
+          "nutrients": {
+            "calories": 2000.09,
+            "protein": 52.94,
+            "fat": 104.41,
+            "carbohydrates": 228.31
+          }
+        },
+        "tuesday": {
+          "meals": [
+            {
+              "id": 640275,
+              "image": "Crab-Cakes-Eggs-Benedict-640275.jpg",
+              "imageType": "jpg",
+              "title": "Crab Cakes Eggs Benedict",
+              "readyInMinutes": 30,
+              "servings": 3,
+              "sourceUrl": "https://www.foodista.com/recipe/P53KDVS3/crab-cakes-eggs-benedict"
+            },
+            {
+              "id": 1098354,
+              "image": "rotisserie-chicken-and-bean-toastatas-1098354.jpg",
+              "imageType": "jpg",
+              "title": "Rotisserie Chicken and Bean Tostadas",
+              "readyInMinutes": 30,
+              "servings": 3,
+              "sourceUrl": "https://www.foodista.com/recipe/YQF7DW47/rotisserie-chicken-and-bean-toastatas"
+            },
+            {
+              "id": 638365,
+              "image": "Chicken-Sweet-Corn-and-Green-Chile-Chowder-638365.jpg",
+              "imageType": "jpg",
+              "title": "Chicken Sweet Corn and Green Chile Chowder",
+              "readyInMinutes": 45,
+              "servings": 5,
+              "sourceUrl": "https://www.foodista.com/recipe/2LF28V8B/chicken-sweet-corn-and-green-chile-chowder"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.92,
+            "protein": 127.99,
+            "fat": 119.2,
+            "carbohydrates": 100.17
+          }
+        },
+        "wednesday": {
+          "meals": [
+            {
+              "id": 634882,
+              "image": "Best-Breakfast-Burrito-634882.jpg",
+              "imageType": "jpg",
+              "title": "Best Breakfast Burrito",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/WLQNMQ5B/best-breakfast-burrito"
+            },
+            {
+              "id": 1000566,
+              "image": "easy-instant-pot-beef-tips-and-rice-1000566.jpg",
+              "imageType": "jpg",
+              "title": "Easy Instant Pot Beef Tips and Rice",
+              "readyInMinutes": 30,
+              "servings": 4,
+              "sourceUrl": "https://www.pinkwhen.com/beef-tips-and-rice/"
+            },
+            {
+              "id": 660405,
+              "image": "Smoky-Black-Bean-Soup-With-Sweet-Potato---Kale-660405.jpg",
+              "imageType": "jpg",
+              "title": "Smoky Black Bean Soup With Sweet Potato & Kale",
+              "readyInMinutes": 630,
+              "servings": 6,
+              "sourceUrl": "https://www.foodista.com/recipe/B8SQD87X/smoky-black-bean-soup-with-sweet-potato-kale"
+            }
+          ],
+          "nutrients": {
+            "calories": 2000.07,
+            "protein": 110.54,
+            "fat": 67.8,
+            "carbohydrates": 239.18
+          }
+        },
+        "thursday": {
+          "meals": [
+            {
+              "id": 655786,
+              "image": "Persimmons-Pumpkin-Orange-Smoothie-655786.jpg",
+              "imageType": "jpg",
+              "title": "Persimmons Pumpkin Orange Smoothie With Chia Seeds",
+              "readyInMinutes": 45,
+              "servings": 3,
+              "sourceUrl": "https://www.foodista.com/recipe/CZF2KGGJ/persimmons-pumpkin-orange-smoothie"
+            },
+            {
+              "id": 1681413,
+              "image": "macaroni-and-cheese-1681413.jpg",
+              "imageType": "jpg",
+              "title": "Macaroni and Cheese",
+              "readyInMinutes": 20,
+              "servings": 2,
+              "sourceUrl": "http://thecuisine.blogspot.com/2016/07/macaroni-and-cheese.html"
+            },
+            {
+              "id": 637276,
+              "image": "Cassoulet-637276.jpg",
+              "imageType": "jpg",
+              "title": "Cassoulet with Chicken or Duck",
+              "readyInMinutes": 45,
+              "servings": 8,
+              "sourceUrl": "https://www.foodista.com/recipe/N352TWQZ/cassoulet"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.95,
+            "protein": 89.98,
+            "fat": 107.41,
+            "carbohydrates": 183.28
+          }
+        },
+        "friday": {
+          "meals": [
+            {
+              "id": 658850,
+              "image": "Royal-Wedding-Pear-and-Coriander-Scones-658850.jpg",
+              "imageType": "jpg",
+              "title": "Royal Wedding Pear and Coriander Scones",
+              "readyInMinutes": 45,
+              "servings": 8,
+              "sourceUrl": "https://www.foodista.com/recipe/FS6V8XD5/royal-wedding-pear-and-coriander-scones"
+            },
+            {
+              "id": 1171085,
+              "image": "how-to-make-an-easy-chicken-enchilada-1171085.jpg",
+              "imageType": "jpg",
+              "title": "How to Make an Easy Chicken Enchilada",
+              "readyInMinutes": 25,
+              "servings": 4,
+              "sourceUrl": "https://www.pinkwhen.com/easy-chicken-fajita-enchiladas-recipe/"
+            },
+            {
+              "id": 1697673,
+              "image": "sheet-pan-dinner-hanger-steak-with-mushrooms-and-carrots-1697673.jpg",
+              "imageType": "jpg",
+              "title": "Sheet Pan Dinner: Hanger Steak with Mushrooms and Carrots",
+              "readyInMinutes": 35,
+              "servings": 2,
+              "sourceUrl": "https://maplewoodroad.com/sheet-pan-dinner-hanger-steak/"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.96,
+            "protein": 87.17,
+            "fat": 156.7,
+            "carbohydrates": 68.92
+          }
+        },
+        "saturday": {
+          "meals": [
+            {
+              "id": 632305,
+              "image": "Amazingly-Fluffy-Waffles-632305.jpg",
+              "imageType": "jpg",
+              "title": "Amazingly Fluffy Waffles",
+              "readyInMinutes": 45,
+              "servings": 6,
+              "sourceUrl": "https://www.foodista.com/recipe/JVHM6NJ5/amazingly-fluffy-waffles"
+            },
+            {
+              "id": 1697747,
+              "image": "wienerschnitzel-1697747.jpg",
+              "imageType": "jpg",
+              "title": "Wienerschnitzel",
+              "readyInMinutes": 30,
+              "servings": 2,
+              "sourceUrl": "https://maplewoodroad.com/wienerschnitzel/"
+            },
+            {
+              "id": 639629,
+              "image": "Classic-Macaroni-and-Cheese-639629.jpg",
+              "imageType": "jpg",
+              "title": "Classic Macaroni and Cheese",
+              "readyInMinutes": 45,
+              "servings": 6,
+              "sourceUrl": "https://www.foodista.com/recipe/RL6K6X3J/classic-macaroni-and-cheese"
+            }
+          ],
+          "nutrients": {
+            "calories": 1999.91,
+            "protein": 91.97,
+            "fat": 111.08,
+            "carbohydrates": 158.11
+          }
+        },
+        "sunday": {
+          "meals": [
+            {
+              "id": 653775,
+              "image": null,
+              "imageType": "jpg",
+              "title": "Open-Face Egg Sandwich with Bacon, Asparagus, and Pesto",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/RMWVZKKR/open-face-egg-sandwich-with-bacon-asparagus-and-pesto"
+            },
+            {
+              "id": 643634,
+              "image": "Fresh-Tomatoes-With-Beans-and-Macaroni-643634.jpg",
+              "imageType": "jpg",
+              "title": "Macaroni with Fresh Tomatoes and Beans",
+              "readyInMinutes": 25,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/LY45JTQD/fresh-tomatoes-with-beans-and-macaroni"
+            },
+            {
+              "id": 654504,
+              "image": "pancit-bihon-filipino-pancit-654504.jpg",
+              "imageType": "jpg",
+              "title": "Pancit Bihon (Filipino Pancit)",
+              "readyInMinutes": 45,
+              "servings": 6,
+              "sourceUrl": "https://www.foodista.com/recipe/W6SPYJMN/pancit-bihon-filipino-pancit-recipe"
+            }
+          ],
+          "nutrients": {
+            "calories": 2000.05,
+            "protein": 115.96,
+            "fat": 83.12,
+            "carbohydrates": 200.24
           }
         }
       }
