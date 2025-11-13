@@ -20,6 +20,13 @@
       "email": "admin@example.com",
       "password": "admin123",
       "isAdmin": true
+    },
+    {
+      "id": 1762997791387,
+      "name": "alex",
+      "email": "alex@gmail.com",
+      "password": "123456789",
+      "isAdmin": false
     }
   ],
   "favorites": [
@@ -35,6 +42,13 @@
       "recipeId": 642169,
       "title": "Edamame Hummus",
       "image": "https://img.spoonacular.com/recipes/642169-556x370.jpg",
+      "userId": "1761985781001"
+    },
+    {
+      "id": "3bf2",
+      "recipeId": 652423,
+      "title": "Moroccan Couscous and Chickpea Salad",
+      "image": "https://img.spoonacular.com/recipes/652423-556x370.jpg",
       "userId": "1761985781001"
     }
   ],
@@ -593,6 +607,273 @@
           }
         }
       }
+    },
+    {
+      "id": "7885",
+      "userId": "1761985781001",
+      "name": "Weekly Plan (2025-11-13)",
+      "week": "2025-11-13",
+      "planData": {
+        "monday": {
+          "meals": [
+            {
+              "id": 1697687,
+              "image": "spinach-mushroom-omelette-with-parmesan-1697687.jpg",
+              "imageType": "jpg",
+              "title": "Spinach Mushroom Omelette with Parmesan",
+              "readyInMinutes": 20,
+              "servings": 2,
+              "sourceUrl": "https://maplewoodroad.com/spinach-mushroom-omelette-with-parmesan/"
+            },
+            {
+              "id": 643634,
+              "image": "Fresh-Tomatoes-With-Beans-and-Macaroni-643634.jpg",
+              "imageType": "jpg",
+              "title": "Macaroni with Fresh Tomatoes and Beans",
+              "readyInMinutes": 25,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/LY45JTQD/fresh-tomatoes-with-beans-and-macaroni"
+            },
+            {
+              "id": 659988,
+              "image": "Shrimp-pasta-with-white-wine-tomato-cream-sauce-659988.jpg",
+              "imageType": "jpg",
+              "title": "Shrimp pasta with white wine tomato cream sauce",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/DCXZ65TN/shrimp-pasta-with-white-wine-tomato-cream-sauce"
+            }
+          ],
+          "nutrients": {
+            "calories": 1500.08,
+            "protein": 81.69,
+            "fat": 49.31,
+            "carbohydrates": 185.61
+          }
+        },
+        "tuesday": {
+          "meals": [
+            {
+              "id": 652239,
+              "image": "moist-vegan-spelt-bran-muffins-652239.jpg",
+              "imageType": "jpg",
+              "title": "Moist Vegan Spelt Bran Muffins",
+              "readyInMinutes": 45,
+              "servings": 15,
+              "sourceUrl": "https://www.foodista.com/recipe/GKTST4DC/moist-vegan-spelt-bran-muffins"
+            },
+            {
+              "id": 663050,
+              "image": "Tex-Mex-Burger-663050.jpg",
+              "imageType": "jpg",
+              "title": "Tex-Mex Burger",
+              "readyInMinutes": 15,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/NSYCCHLT/tex-mex-burger"
+            },
+            {
+              "id": 655806,
+              "image": "Pesto---Yogurt-Pasta-655806.jpg",
+              "imageType": "jpg",
+              "title": "Pesto & Yogurt Pasta",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/Z4QRF6N7/pesto-yogurt-pasta"
+            }
+          ],
+          "nutrients": {
+            "calories": 1499.94,
+            "protein": 68.09,
+            "fat": 85.09,
+            "carbohydrates": 119.76
+          }
+        },
+        "wednesday": {
+          "meals": [
+            {
+              "id": 665279,
+              "image": "Whole-Wheat-Cranberry-Pear-Muffins-665279.jpg",
+              "imageType": "jpg",
+              "title": "Whole Wheat Cranberry Pear Muffins",
+              "readyInMinutes": 45,
+              "servings": 18,
+              "sourceUrl": "https://www.foodista.com/recipe/QFMK6ZMT/whole-wheat-cranberry-pear-muffins"
+            },
+            {
+              "id": 1697577,
+              "image": "spanish-sardines-pasta-1697577.jpg",
+              "imageType": "jpg",
+              "title": "Spanish Sardines Pasta",
+              "readyInMinutes": 25,
+              "servings": 2,
+              "sourceUrl": "https://maplewoodroad.com/spanish-sardines-pasta/"
+            },
+            {
+              "id": 646565,
+              "image": "hearty-chicken-tortilla-soup-646565.jpg",
+              "imageType": "jpg",
+              "title": "Hearty Chicken Tortilla Soup",
+              "readyInMinutes": 45,
+              "servings": 8,
+              "sourceUrl": "https://www.foodista.com/recipe/DDNPVTBV/hearty-chicken-tortilla-soup"
+            }
+          ],
+          "nutrients": {
+            "calories": 1499.98,
+            "protein": 67.47,
+            "fat": 68.84,
+            "carbohydrates": 163.81
+          }
+        },
+        "thursday": {
+          "meals": [
+            {
+              "id": 715569,
+              "image": "strawberry-cheesecake-chocolate-crepes-715569.jpg",
+              "imageType": "jpg",
+              "title": "Strawberry Cheesecake Chocolate Crepes",
+              "readyInMinutes": 40,
+              "servings": 4,
+              "sourceUrl": "https://www.pinkwhen.com/strawberry-cheesecake-chocolate-crepes/"
+            },
+            {
+              "id": 1502523,
+              "image": "instant-pot-chicken-thighs-1502523.jpg",
+              "imageType": "jpg",
+              "title": "Instant Pot Chicken Thighs",
+              "readyInMinutes": 13,
+              "servings": 4,
+              "sourceUrl": "https://www.pinkwhen.com/instant-pot-chicken-thighs/"
+            },
+            {
+              "id": 649395,
+              "image": "Lean-Shepherds-Pie-649395.jpg",
+              "imageType": "jpg",
+              "title": "Lean Shepherd's Pie",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/L64TMDV2/lean-shepherds-pie"
+            }
+          ],
+          "nutrients": {
+            "calories": 1499.92,
+            "protein": 93.49,
+            "fat": 78.24,
+            "carbohydrates": 108.17
+          }
+        },
+        "friday": {
+          "meals": [
+            {
+              "id": 644874,
+              "image": "Gluten-Free-Buckwheat-Pancakes-644874.jpg",
+              "imageType": "jpg",
+              "title": "Gluten-Free Buckwheat Pancakes",
+              "readyInMinutes": 45,
+              "servings": 10,
+              "sourceUrl": "https://www.foodista.com/recipe/D7X8QLKD/gluten-freed-buckwheat-pancakes"
+            },
+            {
+              "id": 1098350,
+              "image": "light-greek-lemon-chicken-orzo-soup-1098350.jpg",
+              "imageType": "jpg",
+              "title": "Light Greek Lemon Chicken Orzo Soup",
+              "readyInMinutes": 30,
+              "servings": 8,
+              "sourceUrl": "https://www.foodista.com/recipe/DPVTGWX6/light-greek-lemon-chicken-orzo-soup"
+            },
+            {
+              "id": 660133,
+              "image": "Simple-Roast-Chicken-660133.jpg",
+              "imageType": "jpg",
+              "title": "Simple Roast Chicken",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/QFV873BT/simple-roast-chicken"
+            }
+          ],
+          "nutrients": {
+            "calories": 1500.08,
+            "protein": 85.43,
+            "fat": 84.32,
+            "carbohydrates": 99.22
+          }
+        },
+        "saturday": {
+          "meals": [
+            {
+              "id": 634318,
+              "image": "Barbecued-Shrimp---Grits-634318.jpg",
+              "imageType": "jpg",
+              "title": "Barbecued Shrimp & Grits",
+              "readyInMinutes": 45,
+              "servings": 6,
+              "sourceUrl": "https://www.foodista.com/recipe/6V5NQDLF/bbq-shrimp-grits"
+            },
+            {
+              "id": 642281,
+              "image": "Eggplant-Caprese-Stacks-642281.jpg",
+              "imageType": "jpg",
+              "title": "Eggplant Caprese Stack Appetizers",
+              "readyInMinutes": 30,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/V4KYVH2L/eggplant-caprese-stacks"
+            },
+            {
+              "id": 634698,
+              "image": "Beef-Tataki-634698.jpg",
+              "imageType": "jpg",
+              "title": "Beef Tataki",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/6R7JGFRL/beef-tataki"
+            }
+          ],
+          "nutrients": {
+            "calories": 1499.94,
+            "protein": 76.75,
+            "fat": 94.4,
+            "carbohydrates": 87.94
+          }
+        },
+        "sunday": {
+          "meals": [
+            {
+              "id": 634781,
+              "image": "Beet-Greens-and-Poached-Eggs-634781.jpg",
+              "imageType": "jpg",
+              "title": "Beet Greens and Poached Eggs",
+              "readyInMinutes": 45,
+              "servings": 2,
+              "sourceUrl": "https://www.foodista.com/recipe/C7V6QGY7/beet-greens-and-poached-eggs"
+            },
+            {
+              "id": 650378,
+              "image": "Low-Carb-Curry-Chicken-Salad-650378.jpg",
+              "imageType": "jpg",
+              "title": "Curry Chicken Salad",
+              "readyInMinutes": 25,
+              "servings": 2,
+              "sourceUrl": "https://www.foodista.com/recipe/RSNP5GR2/low-carb-curry-chicken-salad"
+            },
+            {
+              "id": 644889,
+              "image": "Gluten-Free-Lamb-Moussaka-644889.jpg",
+              "imageType": "jpg",
+              "title": "Gluten-Free Lamb Moussaka",
+              "readyInMinutes": 45,
+              "servings": 4,
+              "sourceUrl": "https://www.foodista.com/recipe/8GK62HVT/gluten-free-lamb-moussaka"
+            }
+          ],
+          "nutrients": {
+            "calories": 1499.96,
+            "protein": 85.88,
+            "fat": 105.91,
+            "carbohydrates": 55.57
+          }
+        }
+      }
     }
   ],
   "reviews": [
@@ -611,6 +892,24 @@
       "rating": 4,
       "comment": "test 2",
       "date": "2025-11-07T08:18:02.137Z"
+    },
+    {
+      "id": "2315",
+      "recipeName": "Potatao",
+      "recipeId": "1762996970523",
+      "userId": "999",
+      "rating": 4,
+      "comment": "fine ",
+      "date": "2025-11-13T01:29:21.565Z"
+    },
+    {
+      "id": "387b",
+      "recipeName": "Dried Cherry-Almond Scones",
+      "recipeId": 641650,
+      "userId": "1761985781001",
+      "rating": 5,
+      "comment": "fine ",
+      "date": "2025-11-13T01:39:37.948Z"
     }
   ],
   "customRecipes": [
@@ -628,6 +927,33 @@
       "title": "french fries",
       "ingredients": "potatoes , salt ",
       "instructions": "test 1",
+      "isPublic": true,
+      "image": "https://placehold.co/312x231/eee/ccc?text=My+Recipe"
+    },
+    {
+      "id": "1762996970523",
+      "userId": "1761985781001",
+      "title": "Potatao",
+      "ingredients": "test",
+      "instructions": "test live",
+      "isPublic": true,
+      "image": "https://placehold.co/312x231/eee/ccc?text=My+Recipe"
+    },
+    {
+      "id": "1762997892440",
+      "userId": 1762997791387,
+      "title": "chicken ",
+      "ingredients": "111",
+      "instructions": "1111",
+      "isPublic": false,
+      "image": "https://placehold.co/312x231/eee/ccc?text=My+Recipe"
+    },
+    {
+      "id": "1762997916298",
+      "userId": 1762997791387,
+      "title": "ffffff",
+      "ingredients": "111111",
+      "instructions": "111",
       "isPublic": true,
       "image": "https://placehold.co/312x231/eee/ccc?text=My+Recipe"
     }

@@ -46,8 +46,9 @@ const [highestRatedRecipe, setHighestRatedRecipe] = useState("");
 
       const favoritesData = await favoritesRes.json();
       const mealPlansData = await mealPlansRes.json();
-
+      //Count how many favorite recipes exist in the database, and store that number in the component’s state variable favoritesCount
       setFavoritesCount(favoritesData.length);
+      //Count how many meal plans have been saved by all users, and store that total in the mealPlansCount state
       setMealPlansCount(mealPlansData.length);
 
       // Most reviewed recipe
@@ -208,7 +209,8 @@ const [highestRatedRecipe, setHighestRatedRecipe] = useState("");
           <tbody>
             {reviews.map((rev) => (
               <tr key={rev.id}>
-                <td>{rev.recipeId}</td>
+                
+                <td>{rev.recipeId} {rev.recipeName}</td>
                 <td>{rev.userId}</td>
                 <td>{rev.rating}</td>
                 <td>{rev.comment}</td>

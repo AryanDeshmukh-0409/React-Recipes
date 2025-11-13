@@ -136,6 +136,7 @@ const RecipeDetails = () => {
     if (!loggedInUser) return alert("You must be logged in to submit a review.");
 
     const reviewToSubmit = {
+      recipeName: recipe.title,
       recipeId: recipe.id,
       userId: loggedInUser.id,
       rating: parseInt(newReview.rating),
